@@ -25,15 +25,15 @@ locals {
 resource "digitalocean_firewall" "default" {
   count = local.firewall_count
 
-  name = module.labels.id
+  name        = module.labels.id
   droplet_ids = var.droplet_ids
 
   dynamic "inbound_rule" {
     iterator = port
     for_each = var.allowed_ports
     content {
-      port_range   = port.value
-      protocol    = var.protocol
+      port_range       = port.value
+      protocol         = var.protocol
       source_addresses = var.allowed_ip
     }
   }

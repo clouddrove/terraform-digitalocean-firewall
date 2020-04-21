@@ -15,14 +15,14 @@ module "ssh_key" {
 
 
 module "droplet" {
-  source = "git::https://github.com/clouddrove/terraform-digitalocean-droplet.git"
-  name              = "droplet"
-  application       = "clouddrove"
-  environment       = "test"
-  label_order       = ["environment", "application", "name"]
+  source             = "git::https://github.com/clouddrove/terraform-digitalocean-droplet.git"
+  name               = "droplet"
+  application        = "clouddrove"
+  environment        = "test"
+  label_order        = ["environment", "application", "name"]
   droplet_count      = 2
   region             = "bangalore-1"
-  ssh_keys           =  [module.ssh_key.fingerprint]
+  ssh_keys           = [module.ssh_key.fingerprint]
   droplet_size       = "nano"
   monitoring         = false
   private_networking = true
@@ -35,12 +35,12 @@ module "droplet" {
 module "firewall" {
   source = "./../"
 
-  name               = "firewall"
-  application        = "clouddrove"
-  environment        = "test"
-  label_order        = ["environment", "application", "name"]
-  enable_firewall    = true
-  allowed_ip         = ["0.0.0.0/0"]
-  allowed_ports      = [22,80]
-  droplet_ids        = module.droplet.id
+  name            = "firewall"
+  application     = "clouddrove"
+  environment     = "test"
+  label_order     = ["environment", "application", "name"]
+  enable_firewall = true
+  allowed_ip      = ["0.0.0.0/0"]
+  allowed_ports   = [22, 80]
+  droplet_ids     = module.droplet.id
 }
