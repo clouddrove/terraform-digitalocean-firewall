@@ -33,8 +33,7 @@ module "droplet" {
 }
 
 module "firewall" {
-  source = "./../"
-
+  source          = "./../"
   name            = "firewall"
   application     = "clouddrove"
   environment     = "test"
