@@ -56,12 +56,17 @@ This module has a few dependencies:
 ### Simple Example
 Here is an example of how you can use this module in your inventory structure:
 ```hcl
-    module "ssh-key" {
-      source          = "./../"
-      key             = "~/.ssh/id_rsa.pub"
-      key_name        = "devops"
-      enable_ssh_key  = true
-    }
+     module "firewall" {
+     source = "./../"
+     name            = "firewall"
+     application     = "clouddrove"
+     environment     = "test"
+     label_order     = ["environment", "application", "name"]
+     enable_firewall = true
+     allowed_ip      = ["0.0.0.0/0"]
+     allowed_ports   = [22, 80]
+     droplet_ids     = module.droplet.id
+     }
 ```
 
 
@@ -73,17 +78,23 @@ Here is an example of how you can use this module in your inventory structure:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| enable_ssh_key | A boolean flag to enable/disable ssh key. | bool | `true` | no |
-| key_name | Name  (e.g. `it-admin` or `devops`). | string | `` | no |
-| key_path | Name  (e.g. `~/.ssh/id_rsa.pub` or `ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3F6tyPEFEzV0LX3X8BsXdMsQ`). | string | `` | no |
+| allowed_ip | List of allowed ip. | list | `<list>` | no |
+| allowed_ports | List of allowed ingress ports. | list | `<list>` | no |
+| application | Application (e.g. `cd` or `clouddrove`). | string | `` | no |
+| delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | string | `-` | no |
+| droplet_ids | The ID of the VPC that the instance security group belongs to. | list | `<list>` | no |
+| enable_firewall | Enable default Security Group with only Egress traffic allowed. | bool | `true` | no |
+| environment | Environment (e.g. `prod`, `dev`, `staging`). | string | `` | no |
+| label_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
+| name | Name  (e.g. `app` or `cluster`). | string | `` | no |
+| protocol | The protocol. If not icmp, tcp, udp, or all use the. | string | `tcp` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| id | The unique ID of the key. |
-| name | Name of SSH key. |
-| public_key | The text of the public key. |
+| id | A unique ID that can be used to identify and reference a Firewall. |
+| name | The name of the Firewall. |
 
 
 

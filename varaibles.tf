@@ -43,7 +43,7 @@ variable "allowed_ip" {
 }
 
 variable "allowed_ports" {
-  type        = list(number)
+  type        = list
   default     = []
   description = "List of allowed ingress ports."
 }
