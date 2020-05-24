@@ -5,13 +5,13 @@
 #
 
 # Name of this project
-name : Terraform DigitalOcean SSH Key
+name : Terraform DigitalOcean Firewall
 
 # License of this project
 license: "MIT"
 
 # Canonical GitHub repo
-github_repo: clouddrove/terraform-digitalocean-ssh-key
+github_repo: clouddrove/terraform-digitalocean-firewall
 
 # Badges to display
 badges:
@@ -24,7 +24,7 @@ badges:
 
 #  description of this project
 description: |-
-  Provides a DigitalOcean SSH key resource to allow you to manage SSH keys for Droplet access.
+  Provides a DigitalOcean Cloud Firewall resource. This can be used to create, modify, and delete Firewalls.
 
 # extra content
 include:
@@ -36,7 +36,7 @@ usage : |-
   Here is an example of how you can use this module in your inventory structure:
   ```hcl
        module "firewall" {
-       source = "./../"
+       source = "git::https://github.com/clouddrove/terraform-digitalocean-firewall.git?ref=tags/0.12.0"
        name            = "firewall"
        application     = "clouddrove"
        environment     = "test"
