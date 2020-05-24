@@ -6,7 +6,7 @@
 </h1>
 
 <p align="center" style="font-size: 1.2rem;">
-    Provides a DigitalOcean Firewall resource to allow you to manage SSH keys for Droplet access.
+    Provides a DigitalOcean Cloud Firewall resource. This can be used to create, modify, and delete Firewalls.
      </p>
 
 <p align="center">
