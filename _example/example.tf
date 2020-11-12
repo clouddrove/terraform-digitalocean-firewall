@@ -6,7 +6,8 @@ provider "digitalocean" {
 }
 
 module "vpc" {
-  source      = "git::https://github.com/clouddrove/terraform-digitalocean-vpc.git?ref=tags/0.12.0"
+  source      = "clouddrove/vpc/digitalocean"
+  version     = "0.13.0"
   name        = "vpc"
   application = "clouddrove"
   environment = "test"
@@ -17,7 +18,8 @@ module "vpc" {
 
 
 module "ssh_key" {
-  source         = "git::https://github.com/clouddrove/terraform-digitalocean-ssh-key.git?ref=tags/0.12.0"
+  source         = "clouddrove/ssh-key/digitalocean"
+  version        = "0.13.0"
   key_path       = "~/.ssh/id_rsa.pub"
   key_name       = "devops"
   enable_ssh_key = true
@@ -25,7 +27,8 @@ module "ssh_key" {
 
 
 module "droplet" {
-  source             = "git::https://github.com/clouddrove/terraform-digitalocean-droplet.git?ref=tags/0.12.0"
+  source             = "clouddrove/droplet/digitalocean"
+  version            = "0.13.0"
   name               = "droplet"
   application        = "clouddrove"
   environment        = "test"
