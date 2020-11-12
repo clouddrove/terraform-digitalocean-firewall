@@ -5,14 +5,14 @@
     Terraform DigitalOcean Firewall
 </h1>
 
-<p align="center" style="font-size: 1.2rem;">
+<p align="center" style="font-size: 1.2rem;"> 
     Provides a DigitalOcean Cloud Firewall resource. This can be used to create, modify, and delete Firewalls.
      </p>
 
 <p align="center">
 
 <a href="https://www.terraform.io">
-  <img src="https://img.shields.io/badge/Terraform-v0.12-green" alt="Terraform">
+  <img src="https://img.shields.io/badge/Terraform-v0.13-green" alt="Terraform">
 </a>
 <a href="LICENSE.md">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="Licence">
@@ -41,7 +41,7 @@
 
 ## Prerequisites
 
-This module has a few dependencies:
+This module has a few dependencies: 
 
 
 
@@ -57,7 +57,8 @@ This module has a few dependencies:
 Here is an example of how you can use this module in your inventory structure:
 ```hcl
      module "firewall" {
-     source = "git::https://github.com/clouddrove/terraform-digitalocean-firewall.git?ref=tags/0.12.0"
+     source          = "clouddrove/firewall/digitalocean"
+     version         = "0.13.0"
      name            = "firewall"
      application     = "clouddrove"
      environment     = "test"
@@ -77,17 +78,17 @@ Here is an example of how you can use this module in your inventory structure:
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| allowed_ip | List of allowed ip. | list | `<list>` | no |
-| allowed_ports | List of allowed ingress ports. | list | `<list>` | no |
-| application | Application (e.g. `cd` or `clouddrove`). | string | `` | no |
-| delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | string | `-` | no |
-| droplet_ids | The ID of the VPC that the instance security group belongs to. | list | `<list>` | no |
-| enable_firewall | Enable default Security Group with only Egress traffic allowed. | bool | `true` | no |
-| environment | Environment (e.g. `prod`, `dev`, `staging`). | string | `` | no |
-| label_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
-| name | Name  (e.g. `app` or `cluster`). | string | `` | no |
-| protocol | The protocol. If not icmp, tcp, udp, or all use the. | string | `tcp` | no |
+|------|-------------|------|---------|:--------:|
+| allowed\_ip | List of allowed ip. | `list` | `[]` | no |
+| allowed\_ports | List of allowed ingress ports. | `list` | `[]` | no |
+| application | Application (e.g. `cd` or `clouddrove`). | `string` | `""` | no |
+| delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | `string` | `"-"` | no |
+| droplet\_ids | The ID of the VPC that the instance security group belongs to. | `list` | `[]` | no |
+| enable\_firewall | Enable default Security Group with only Egress traffic allowed. | `bool` | `true` | no |
+| environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
+| label\_order | Label order, e.g. `name`,`application`. | `list` | `[]` | no |
+| name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
+| protocol | The protocol. If not icmp, tcp, udp, or all use the. | `string` | `"tcp"` | no |
 
 ## Outputs
 
@@ -101,7 +102,7 @@ Here is an example of how you can use this module in your inventory structure:
 
 
 
-## Feedback
+## Feedback 
 If you come accross a bug or have any feedback, please log it in our [issue tracker](https://github.com/clouddrove/terraform-digitalocean-firewall/issues), or feel free to drop us an email at [hello@clouddrove.com](mailto:hello@clouddrove.com).
 
 If you have found it worth your time, go ahead and give us a ★ on [our GitHub](https://github.com/clouddrove/terraform-digitalocean-firewall)!
