@@ -43,6 +43,13 @@ resource "digitalocean_firewall" "default" {
     port_range            = "1-65535"
     destination_addresses = ["0.0.0.0/0", "::/0"]
   }
+
+  outbound_rule {
+    protocol              = "udp"
+    port_range            = "1-65535"
+    destination_addresses = ["0.0.0.0/0", "::/0"]
+  }
+
   tags = [
     module.labels.name,
     module.labels.application,

@@ -1,5 +1,5 @@
-#Module      : SSH KEY
-#Description : Provides a DigitalOcean SSH key resource to allow you to manage SSH keys for Droplet access.
+#Module      :  Firewall
+#Description :  Provides a DigitalOcean Cloud Firewall resource. This can be used to create, modify, and delete Firewalls.
 output "id" {
   value       = join("", digitalocean_firewall.default.*.id)
   description = "A unique ID that can be used to identify and reference a Firewall."
