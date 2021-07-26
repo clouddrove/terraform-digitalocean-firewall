@@ -52,7 +52,6 @@ resource "digitalocean_firewall" "default" {
   tags = [
     module.labels.name,
     module.labels.environment,
-    module.labels.createdby,
     module.labels.managedby
   ]
 }
