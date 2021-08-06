@@ -6,11 +6,6 @@ variable "name" {
   description = "Name  (e.g. `app` or `cluster`)."
 }
 
-variable "application" {
-  type        = string
-  default     = ""
-  description = "Application (e.g. `cd` or `clouddrove`)."
-}
 
 variable "environment" {
   type        = string
@@ -19,7 +14,7 @@ variable "environment" {
 }
 
 variable "label_order" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "Label order, e.g. `name`,`application`."
 }
@@ -37,13 +32,13 @@ variable "enable_firewall" {
 }
 
 variable "allowed_ip" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "List of allowed ip."
 }
 
 variable "allowed_ports" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "List of allowed ingress ports."
 }
@@ -55,7 +50,7 @@ variable "protocol" {
 }
 
 variable "droplet_ids" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "The ID of the VPC that the instance security group belongs to."
 }
