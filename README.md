@@ -14,7 +14,7 @@
 <p align="center">
 
 <a href="https://www.terraform.io">
-  <img src="https://img.shields.io/badge/Terraform-v0.13-green" alt="Terraform">
+  <img src="https://img.shields.io/badge/Terraform-v0.15-green" alt="Terraform">
 </a>
 <a href="LICENSE.md">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="Licence">
@@ -73,11 +73,10 @@ Here is an example of how you can use this module in your inventory structure:
 ```hcl
      module "firewall" {
      source          = "clouddrove/firewall/digitalocean"
-     version         = "0.13.0"
+     version         = "0.15.0"
      name            = "firewall"
-     application     = "clouddrove"
      environment     = "test"
-     label_order     = ["environment", "application", "name"]
+     label_order     = ["environment", "name"]
      enable_firewall = true
      allowed_ip      = ["0.0.0.0/0"]
      allowed_ports   = [22, 80]
@@ -94,14 +93,13 @@ Here is an example of how you can use this module in your inventory structure:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| allowed\_ip | List of allowed ip. | `list` | `[]` | no |
-| allowed\_ports | List of allowed ingress ports. | `list` | `[]` | no |
-| application | Application (e.g. `cd` or `clouddrove`). | `string` | `""` | no |
+| allowed\_ip | List of allowed ip. | `list(any)` | `[]` | no |
+| allowed\_ports | List of allowed ingress ports. | `list(any)` | `[]` | no |
 | delimiter | Delimiter to be used between `organization`, `environment`, `name` and `attributes`. | `string` | `"-"` | no |
-| droplet\_ids | The ID of the VPC that the instance security group belongs to. | `list` | `[]` | no |
+| droplet\_ids | The ID of the VPC that the instance security group belongs to. | `list(any)` | `[]` | no |
 | enable\_firewall | Enable default Security Group with only Egress traffic allowed. | `bool` | `true` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
-| label\_order | Label order, e.g. `name`,`application`. | `list` | `[]` | no |
+| label\_order | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | protocol | The protocol. If not icmp, tcp, udp, or all use the. | `string` | `"tcp"` | no |
 
